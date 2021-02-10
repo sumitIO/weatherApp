@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Weather App</title>
+</head>
+<body>
+    <div class="wrapper">
+        <!-- autofocus attribute focus on Input when page load -->
+        <input class='inputLocation' type="text"  value="Location" onfocus="this.value=''">
+    
+    </div>
+    <div class="wrapper">
+        <button class='btn'>Search</button>
+    </div>
+    <div class="wrapper">
+        <!-- <div class="col">
+            <div></div>
+        </div> -->
+        <div class="col">
+            <div id="currentTemp">
+                <span class="main-temp"></span>
+            </div>
+        </div> 
+        <div class="col col-3">
+            <div class="high"></div>
+            <div class="low"></div>
+            <div class="real"></div>
+        </div>
+        <!-- <div class="col" id="4"></div> -->
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
