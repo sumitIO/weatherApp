@@ -11,26 +11,31 @@
     <title>Weather App</title>
 </head>
 <body>
+    <div class="mode">Day
+        <label class="switch">
+            <input type="checkbox" class="mode" name="checkbox"> 
+            <span class="slider round"></span>
+        </label>
+        Night
+    </div>
+    <div class="wrapper">
+        <div class="local-time"></div>
+    </div>
+    <hr>
     <div class="wrapper">
         <!-- autofocus attribute focus on Input when page load -->
-        <input class='inputLocation' type="text"  value="Location" onfocus="this.value=''">
+        <input class='inputLocation' type="text"  placeholder="enter location" onfocus="this.value=''">
         <button class='btn'>Search</button>
     </div>
     <div class="wrapper">
-        <!-- <div class="col">
-            <div></div>
-        </div> -->
         <div class="col">
             <div id="currentTemp">
                 <span class="main-temp"></span>
             </div>
-        </div> 
-        <div class="col col-3">
-            <div class="high"></div>
-            <div class="low"></div>
-            <div class="real"></div>
         </div>
-        <!-- <div class="col" id="4"></div> -->
+    </div>
+    <div class="wrapper">    
+            <div class="real"></div>
     </div>
     <script src="app.js"></script>
 </body>

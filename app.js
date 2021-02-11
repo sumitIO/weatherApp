@@ -7,17 +7,40 @@ var weatherData = ''
 var cityName  = ''
 var currentTemperature = ''
 var feelsLike = ''
-
+var response
 
 // QUERY SELECTORS
+var locaTime = document.querySelector('.local-time')
 var inputCity = document.querySelector('.inputLocation')
 var searchButton = document.querySelector('.btn')
 var currentTemperatureElement = document.querySelector('.main-temp')
 var feelsLikeElement = document.querySelector('.real')
 
+var mode = document.querySelector('input[name="checkbox"]')
+mode.addEventListener('click',()=>{
+    console.log(mode.value)
+    toggleMode()
+});
+
+
+
+function toggleMode(){
+    document.body.classList.toggle('theme-night')
+    
+    document.querySelector('.mode').classList.toggle('night-text')
+    document.querySelector('.local-time').classList.toggle('night-text')
+    document.querySelector('.main-temp').classList.toggle('night-text')
+    document.querySelector('.real').classList.toggle('night-text')
+}
+setInterval(()=>{
+    var time = new Date()
+    time = time.toLocaleTimeString()
+    locaTime.textContent = time
+},1000)
+
+
 
 // EVENT LISTENERS
-inputCity.addEventListener('click', ()=>inputCity.value = '')
 inputCity.addEventListener('keypress',(e)=>{
     if(e.key === 'Enter'){
         requestHandler()
@@ -27,7 +50,7 @@ searchButton.addEventListener('click', requestHandler)
 
 
 // EVENT HANDLERS
-function requestHandler(){
+async function requestHandler(){
     // remove Animation Class
     cityName = inputCity.value
     if(cityName == '' || cityName =='Location'){
@@ -42,26 +65,42 @@ function requestHandler(){
     // // console.log(fetch(url))
     // fetch(url).then(res => console.log(res))
 
+    // WOTHOUT USING ASYNC AWAIT
+    // fetch(url).then(res => {
+        //     if(res.ok){
+        //         console.log('SUCCESS')
+        //         return res.json()
+        //     }else{
+        //         alert('City Not Found!')
+        //         console.log('NOT SUCCESS')
+        //     }
+        //     })
+        // .then(data => displayTemp(data))
+
     // res.json() Returns Another Promise
-    // GET REQUEST
-    fetch(url)
-        .then(res => {
-            if(res.ok){
-                console.log('SUCCESS')
-                return res.json()
-            }else{
-                alert('City Not Found!')
-                console.log('NOT SUCCESS')
-            }
-            })
-        .then(data => displayTemp(data))
+    // USING ASYNC-AWAIT
+    try{
+        response = await fetch(url)
+        // console.log(response)
+        if(response.status === 200){
+            console.log('SUCCESS')
+            data = await response.json()
+            displayTemp(data)
+            console.log(data)
+        }
+        else{
+            console.log('BAD REQUEST')
+            return alert('Uh Oh... City Not Found :(')
+        }
+    }
+    catch(err){
+        console.log(err)
+    }
 }
 
 
 // FUNCTIONS
 function displayTemp(data){
-    // log the JSON data
-    console.log(data)
     // copy data to local variables
     weatherData = data
     currentTemperature = weatherData.main.temp - 273.15
