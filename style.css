@@ -186,3 +186,9 @@ hr{
     margin-top: 20vh;
     font-size: 75px;
 }
+
+.footer{
+    position: absolute;
+    top: 95vh;
+    font-size: 12px;
+}

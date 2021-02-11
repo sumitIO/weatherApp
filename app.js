@@ -15,37 +15,21 @@ var inputCity = document.querySelector('.inputLocation')
 var searchButton = document.querySelector('.btn')
 var currentTemperatureElement = document.querySelector('.main-temp')
 var feelsLikeElement = document.querySelector('.real')
-
 var mode = document.querySelector('input[name="checkbox"]')
-mode.addEventListener('click',()=>{
-    console.log(mode.value)
-    toggleMode()
-});
-
-
-
-function toggleMode(){
-    document.body.classList.toggle('theme-night')
-    
-    document.querySelector('.mode').classList.toggle('night-text')
-    document.querySelector('.local-time').classList.toggle('night-text')
-    document.querySelector('.main-temp').classList.toggle('night-text')
-    document.querySelector('.real').classList.toggle('night-text')
-}
-setInterval(()=>{
-    var time = new Date()
-    time = time.toLocaleTimeString()
-    locaTime.textContent = time
-},1000)
-
 
 
 // EVENT LISTENERS
+// switched mode :day/night 
+mode.addEventListener('click',()=>{
+    toggleMode()
+});
+// input event listener
 inputCity.addEventListener('keypress',(e)=>{
     if(e.key === 'Enter'){
         requestHandler()
     }
 })
+// search button event listener
 searchButton.addEventListener('click', requestHandler)
 
 
@@ -113,3 +97,19 @@ function displayTemp(data){
     currentTemperatureElement.innerHTML = currentTemperature.toFixed(1) + ' &#176;C'
     feelsLikeElement.innerHTML =  'Real Feel '+ feelsLike.toFixed(1) + ' &#176;C'
 }
+// Switch Mode
+function toggleMode(){
+    document.body.classList.toggle('theme-night')
+
+    document.querySelector('.mode').classList.toggle('night-text')
+    document.querySelector('.local-time').classList.toggle('night-text')
+    document.querySelector('.main-temp').classList.toggle('night-text')
+    document.querySelector('.real').classList.toggle('night-text')
+    document.querySelector('.footer').classList.toggle('night-text')
+}
+// Display Local Time
+setInterval(()=>{
+    var time = new Date()
+    time = time.toLocaleTimeString()
+    locaTime.textContent = time
+},1000)
