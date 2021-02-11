@@ -12,11 +12,12 @@ body{
 }
 
 hr{
-    width: 30vw;
+    width: 40vw;
     opacity: 0.5;
     background-color: rgb(3, 44, 44);
     color: rgb(134, 161, 152);
 }
+/* from W3 */
 .switch{
     position: relative;
     display: inline-block;
@@ -84,9 +85,6 @@ hr{
     color: rgba(0,0,0,0.75);
     text-align: center;
 }
-.col-3{
-    text-align: justify;
-}
 
 .main-temp, .degree{
     font-size: 100px;
@@ -125,6 +123,7 @@ hr{
     opacity: 0.85;
 }
 
+
 .inputLocation{
     margin-top: 2vh;
     width: 30vw;
@@ -141,6 +140,29 @@ hr{
     
     transition: background-color 0.75s;
 }
+
+.search-box{
+    display: flex;
+    justify-content: center;
+}
+
+@media (max-width: 480px){
+   .search-box{
+       display: block;
+       text-align: center;
+   }
+
+   .inputLocation{
+    width: 150px;
+    height: 45px;
+    }
+
+    .main-temp, .degree{
+        font-size: 75px;
+    }
+
+}
+
 .btn{  
     margin-top: 2vh;
     margin-left: 5px;
