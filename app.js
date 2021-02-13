@@ -18,6 +18,15 @@ var feelsLikeElement = document.querySelector('.real')
 var mode = document.querySelector('input[name="checkbox"]')
 
 
+// switch mode if already night
+var currentTime = new Date();
+if(currentTime.getHours() <=5 || currentTime.getHours()>=19){
+    toggleMode()
+    // var silder = document.querySelector('.slider');
+    // silder.style.backgroundColor = '#1a9250';
+}
+
+
 // EVENT LISTENERS
 // switched mode :day/night 
 mode.addEventListener('click',()=>{
